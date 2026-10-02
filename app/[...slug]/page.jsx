@@ -1,0 +1,7 @@
+import {serviceDetails} from '../../data/service-details';
+import {services,routeInfo} from '../../data/business';
+import {siteOrigin} from '../../data/seo';
+import {notFound} from 'next/navigation';
+import RouterApplication from '../../components/routing/RouterApplication';
+export async function generateMetadata({params}){const {slug}=await params;const service=slug[0]==='services'&&slug[1]?services.find(s=>s.slug===slug[1]):null;const info=service?{title:service.title,description:service.text}:routeInfo[slug[0]];const detail=service&&serviceDetails[service.slug];if(detail)return {title:detail.metadata.title,description:detail.metadata.description,alternates:{canonical:new URL('/services/'+detail.slug,siteOrigin).href},openGraph:{title:detail.metadata.title+' | PestiQ',description:detail.metadata.description,type:'website',url:new URL('/services/'+detail.slug,siteOrigin).href}};return {title:info?.title||'Page not found',description:info?.description,openGraph:{title:(info?.title||'PestiQ')+' | PestiQ',description:info?.description},alternates:{canonical:new URL('/'+slug.join('/'),siteOrigin).href}}}
+export default async function Page({params}){const {slug}=await params;const path='/'+slug.join('/');const valid=slug.length===1?Boolean(routeInfo[slug[0]]):slug.length===2&&slug[0]==='services'&&services.some(s=>s.slug===slug[1]);if(!valid)notFound();return <RouterApplication initialPath={path}/>;}
