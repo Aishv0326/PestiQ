@@ -1,42 +1,70 @@
-# PestiQ homepage prototype
+# PestiQ Website
 
-React components are written in JavaScript/JSX. Styling is regular CSS with global design tokens in app/globals.css. The starter includes unused Tailwind dependencies, but this site does not import or use Tailwind.
+PestiQ is a responsive pest-control business website prototype built with React and JavaScript.
 
-## Editing
-- data/business.js: services, demo contact details, proposed cities, sample reviews, offer and navigation.
-- app/page.jsx: homepage composition.
-- components/Site.jsx: header, footer, cards, reveals, process tabs, review controls and demo inspection form.
-- app/[...slug]/page.jsx: lightweight future-page foundations and six service detail routes.
-- components/Seo.jsx: verified-only structured-data support.
+The current version is being developed as a visual prototype, with a focus on establishing the overall design direction, color theme, page structure, responsive layout, and reusable components.
 
-## Before public launch
-Replace all demo content with approved business information. Connect the inspection form to a secure booking service; the prototype currently sends and stores nothing. Verify phone and email. Supply approved privacy/consent copy and treatment claims. Set SITE_ORIGIN to the production origin or update data/seo.js, enable indexing in layout.jsx and update robots.js. sitemap.js already generates routes using the configured origin. No fabricated reviews, statistics or guarantees are included in structured data.
+## Tech Stack
 
-## Commands
-Use the package manager selected in .sites-runtime/execution-profile.json. npm run build builds the site. The managed preview is started with sites-preview start from this directory.
+- React
+- JavaScript / JSX
+- CSS
+- React Router
+- Next.js
 
-Secondary pages deliberately remain small until the homepage design is approved. Image source credits are maintained in public/images/CREDITS.md.
+## Current Pages
 
-## Service-detail review architecture
+The project currently includes:
 
-Termite Control alone uses the rich service-detail layout. Other service pages retain the original small foundations until this design is approved.
+- Home
+- About
+- Services
+- Residential
+- Commercial
+- Offers
+- Contact
+- Service detail pages
 
-- data/service-details.js: per-service hero, signs, problem overview, process, property types, prevention, FAQs, related services, contact text and metadata.
-- components/services/ServiceDetail.jsx: reusable section layout, native accessible FAQ accordions, breadcrumb JSON-LD and internal navigation.
-- components/services/ServiceInquiry.jsx: service-specific demo inspection form; no data is transmitted or stored.
-- components/services/service-detail.css: scoped CSS using existing global design tokens. Homepage source, global CSS and shared components remain unchanged.
+The Home page and Termite Control page currently represent the main design direction. The remaining service pages are being updated using the same reusable service-page structure.
 
-General educational references are linked on the page. No ratings, business credentials, effectiveness statistics or guarantee schema are introduced. Production-specific methods and copy need local review.
+## Project Structure
 
-## Client navigation
+- `app/` – application pages and routing
+- `components/` – reusable UI components
+- `components/services/` – service-detail components
+- `components/routing/` – client-side navigation components
+- `data/` – business and service content
+- `public/images/` – website images and assets
+- `app/globals.css` – global styles and design tokens
 
-React Router owns in-app navigation through BrowserRouter, Routes, Link and NavLink. The existing server routes render the same route tree with StaticRouter on direct requests, preserving server content and route metadata. The homepage composition now lives in components/HomePage.jsx; its CSS and visual structure are unchanged.
+## Development
 
-- components/routing/RouterApplication.jsx: route tree, route focus, scroll reset/restoration, history integration and client metadata updates.
-- components/routing/SiteLink.jsx: internal History API links; external/phone/email links stay native.
-- components/routing/SecondaryPage.jsx: existing secondary-page foundations.
-- components/routing/navigation.css: active nav state and accessible route announcements only.
+Install dependencies:
 
-Run `npm run test:navigation` for simulated-DOM navigation integration checks, including SSR and nested-URL hydration. Real-browser visual and touch testing remains a separate check.
+```bash
+npm install
+```
 
-Current placeholder foundations: About, Residential, Commercial, Offers and five non-termite service detail pages. Services has the functional directory; Contact has the working demo form.
+Run the development environment:
+
+```bash
+npm run dev
+```
+
+Create a production build:
+
+```bash
+npm run build
+```
+
+## Project Status
+
+This project is currently under development.
+
+The deployed version is intended for design and theme review. Business information, contact details, service content, forms, SEO configuration, and production integrations will be finalized before the public launch.
+
+## Notes
+
+The inspection/contact forms in the current prototype are UI demonstrations and do not submit or store customer information.
+
+Final business details and production configuration will be added before launch.
